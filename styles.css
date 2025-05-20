@@ -448,3 +448,7 @@
 .content + .dynamic-note-section {
   margin-top: 0.2rem;
 }
+
+#dynamic-note {
+  display: none;
+}

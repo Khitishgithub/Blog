@@ -177,11 +177,20 @@
           const parser = new DOMParser();
           const doc = parser.parseFromString(html, 'text/html');
           const content = doc.body.innerHTML;
+          document.getElementById('notes').style.display = 'none'; // hide main notes
+          document.getElementById('dynamic-note').style.display = 'block'; // show loaded note
           document.getElementById('dynamic-note').innerHTML = `
-            <div class="loaded-content animate__animated animate__fadeIn">
-              ${content}
-            </div>
-          `;
+        <div class="loaded-content animate__animated animate__fadeIn">
+          <button onclick="goBackToNotes()" style="margin-bottom: 1rem; padding: 8px 16px; background-color: #6366F1; color: white; border: none; border-radius: 4px; cursor: pointer;">
+           ← Back to Notes
+          </button
+          ${content}
+
+            <button onclick="goBackToNotes()" style="margin-top: 2rem ;margin-bottom: 1rem; padding: 8px 16px; background-color: #6366F1; color: white; border: none; border-radius: 4px; cursor: pointer;">
+           ← Back to Notes
+          </button
+        </div>
+      `;
           window.scrollTo({ top: document.getElementById('dynamic-note').offsetTop, behavior: 'smooth' });
         })
         .catch(() => {
@@ -191,6 +200,14 @@
 
 
     document.querySelector('.sub-item').classList.add('active');
+
+    function goBackToNotes() {
+      document.getElementById('dynamic-note').style.display = 'none';
+      document.getElementById('dynamic-note').innerHTML = '';
+      document.getElementById('notes').style.display = 'block';
+      window.scrollTo({ top: document.getElementById('notes').offsetTop, behavior: 'smooth' });
+    }
+
   </script>
 </body>
 
