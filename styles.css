@@ -101,7 +101,7 @@
     }
     
     .sidebar {
-      width: 580px;
+      width: 280px;
       background-color: #ffffff;
       border-radius: var(--border-radius);
       box-shadow: var(--shadow);
