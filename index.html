@@ -110,23 +110,30 @@
 
 
     function filterNotes(category) {
-      const allNotes = document.querySelectorAll('.note-link');
-      const contentTitle = document.querySelector('.content-title');
-      const subItems = document.querySelectorAll('.sub-item');
+  const allNotes = document.querySelectorAll('.note-link');
+  const contentTitle = document.querySelector('.content-title');
+  const subItems = document.querySelectorAll('.sub-item');
 
-      subItems.forEach(item => item.classList.remove('active'));
-      event.currentTarget.classList.add('active');
+  // Hide blog view and show notes section when filtering
+  document.getElementById('dynamic-note').style.display = 'none';
+  document.getElementById('dynamic-note').innerHTML = '';
+  document.getElementById('notes').style.display = 'block';
 
-      allNotes.forEach(note => note.style.display = 'none');
-      if (category === 'all') {
-        allNotes.forEach(note => note.style.display = 'block');
-        contentTitle.textContent = 'All Notes';
-      } else {
-        const filtered = document.querySelectorAll(`.note-link.${category}`);
-        filtered.forEach(note => note.style.display = 'block');
-        contentTitle.textContent = `${category.charAt(0).toUpperCase() + category.slice(1)} Notes`;
-      }
-    }
+  subItems.forEach(item => item.classList.remove('active'));
+  event.currentTarget.classList.add('active');
+
+  allNotes.forEach(note => note.style.display = 'none');
+
+  if (category === 'all') {
+    allNotes.forEach(note => note.style.display = 'block');
+    contentTitle.textContent = 'All Notes';
+  } else {
+    const filtered = document.querySelectorAll(`.note-link.${category}`);
+    filtered.forEach(note => note.style.display = 'block');
+    contentTitle.textContent = `${category.charAt(0).toUpperCase() + category.slice(1)} Notes`;
+  }
+}
+
 
     function showAll() {
       const allNotes = document.querySelectorAll('.note-link');
